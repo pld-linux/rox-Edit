@@ -4,14 +4,14 @@ Summary:	ROX-Edit is a simple text editor
 Summary(pl):	ROX-Edit jest prostym edytorem tekstu
 Name:		rox-%{_name}
 Version:	0.1.2
-Release:	2
+Release:	3
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/%{_name}-%{version}.tgz
 # Source0-md5:	23dc01380a23914c35f4a1e1846a8f71
 URL:		http://rox.sourceforge.net/rox_utils.php3
 BuildRequires:	rpm-pythonprov
-Requires:	python-pygtk
+Requires:	python-pygtk-gtk
 Requires:	rox-Lib
 %pyrequires_eq  python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
