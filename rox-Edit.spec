@@ -1,4 +1,3 @@
-%include  /usr/lib/rpm/macros.python
 %define _name Edit
 Summary:	ROX-Edit is a simple text editor
 Summary(pl):	ROX-Edit jest prostym edytorem tekstu
