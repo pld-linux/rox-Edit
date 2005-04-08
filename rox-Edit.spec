@@ -2,15 +2,16 @@
 Summary:	ROX-Edit is a simple text editor
 Summary(pl):	ROX-Edit jest prostym edytorem tekstu
 Name:		rox-%{_name}
-Version:	0.1.2
-Release:	3
-License:	GPL
+Version:	1.9.7
+Release:	1
+License:	GPL v2
 Group:		X11/Applications
-Source0:	http://dl.sourceforge.net/rox/%{_name}-%{version}.tgz
-# Source0-md5:	23dc01380a23914c35f4a1e1846a8f71
-URL:		http://rox.sourceforge.net/rox_utils.php3
+Source0:	http://dl.sourceforge.net/rox/edit-%{version}.tgz
+# Source0-md5:	a53920438d021640dbd4f573aa35bd76
+Source1:	%{name}.desktop
+URL:		http://rox.sourceforge.net/edit.html
 Requires:	python-pygtk-gtk
-Requires:	rox-Lib
+Requires:	rox-Lib2
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -20,18 +21,23 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 ROX-Edit is a very simple text editor written in Python.
 
 %description -l pl
-ROX-Edit hest bardzo prostym edytorem tekstu napisanym w Pythonie.
+ROX-Edit jest bardzo prostym edytorem tekstu napisanym w Pythonie.
 
 %prep
-%setup -q -n %{_name}
+%setup -q -n edit-%{version}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_appsdir}/%{_name}/{Help,icons}
+install -d $RPM_BUILD_ROOT%{_appsdir}/%{_name}/{Help,Messages,images}
+install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
-install App* *.py Options.xml $RPM_BUILD_ROOT%{_appsdir}/%{_name}
+cd %{_name}
+install .DirIcon App* *.py Options.xml $RPM_BUILD_ROOT%{_appsdir}/%{_name}
 install Help/README $RPM_BUILD_ROOT%{_appsdir}/%{_name}/Help
-install icons/* $RPM_BUILD_ROOT%{_appsdir}/%{_name}/icons
+install Messages/*.gmo $RPM_BUILD_ROOT%{_appsdir}/%{_name}/Messages
+install images/* $RPM_BUILD_ROOT%{_appsdir}/%{_name}/images
+install .DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
 %py_comp $RPM_BUILD_ROOT%{_appsdir}/%{_name}
 %py_ocomp $RPM_BUILD_ROOT%{_appsdir}/%{_name}
@@ -40,11 +46,23 @@ install icons/* $RPM_BUILD_ROOT%{_appsdir}/%{_name}/icons
 rm -rf $RPM_BUILD_ROOT
 
 %files
+%doc %{_name}/Help/{Changes,README}
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_appsdir}/%{_name}/AppRun
-%{_appsdir}/%{_name}/AppI*
-%{_appsdir}/%{_name}/Options.xml
+%attr(755,root,root) %dir %{_appsdir}
+%dir %{_appsdir}/%{_name}
+%{_appsdir}/%{_name}/.DirIcon
+%{_appsdir}/%{_name}/*.xml
 %{_appsdir}/%{_name}/*.py[co]
 %{_appsdir}/%{_name}/Help
-%{_appsdir}/%{_name}/icons
-%dir %{_appsdir}/%{_name}
+%dir %{_appsdir}/%{_name}/Messages
+%lang(de) %{_appsdir}/%{_name}/Messages/de.gmo
+%lang(es) %{_appsdir}/%{_name}/Messages/es.gmo
+%lang(fr) %{_appsdir}/%{_name}/Messages/fr.gmo
+%lang(it) %{_appsdir}/%{_name}/Messages/it.gmo
+%lang(zh_CN) %{_appsdir}/%{_name}/Messages/zh_CN.gmo
+%lang(zh_TW) %{_appsdir}/%{_name}/Messages/zh_TW.gmo
+%dir %{_appsdir}/%{_name}/images
+%{_appsdir}/%{_name}/images/*.png
+%{_desktopdir}/%{name}.desktop
+%{_pixmapsdir}/%{name}.png
