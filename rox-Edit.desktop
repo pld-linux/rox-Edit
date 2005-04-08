@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=ROX-Edit
+Comment=Simple text editor
+Comment[pl]=Prosty edytor tekstu
+Exec=/usr/lib/ROX-apps/Edit/AppRun
+Icon=rox-Edit.png
+Type=Application
+Terminal=false
+Categories=GTK;TextEditor;
+Encoding=UTF-8
+# vi: encoding=utf-8
