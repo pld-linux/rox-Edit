@@ -11,6 +11,7 @@ Source0:	http://dl.sourceforge.net/rox/edit-%{version}.tgz
 Source1:	%{name}.desktop
 URL:		http://rox.sourceforge.net/edit.html
 Requires:	python-pygtk-gtk
+Requires:	rox >= 2.2.0-2
 Requires:	rox-Lib2
 %pyrequires_eq	python
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -49,7 +50,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc %{_name}/Help/{Changes,README}
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_appsdir}/%{_name}/AppRun
-%attr(755,root,root) %dir %{_appsdir}
 %dir %{_appsdir}/%{_name}
 %{_appsdir}/%{_name}/.DirIcon
 %{_appsdir}/%{_name}/*.xml
