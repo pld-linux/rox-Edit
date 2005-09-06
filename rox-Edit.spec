@@ -10,7 +10,6 @@ Source0:	http://dl.sourceforge.net/rox/edit-%{version}.tgz
 # Source0-md5:	a53920438d021640dbd4f573aa35bd76
 Source1:	%{name}.desktop
 URL:		http://rox.sourceforge.net/phpwiki/index.php/Edit
-BuildRequires:	sed >= 4.0
 Requires:	python-pygtk-gtk
 Requires:	rox >= 2.3
 Requires:	rox-Lib2
@@ -40,11 +39,7 @@ install Messages/*.gmo $RPM_BUILD_ROOT%{_roxdir}/%{_name}/Messages
 install images/* $RPM_BUILD_ROOT%{_roxdir}/%{_name}/images
 install .DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
-%ifarch %{x8664} ppc64 s390x sparc64
-sed -i -e "s/lib/lib64/g" %{SOURCE1}
-%endif
-
-install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
+sed -e "s,/lib/,/%{_lib}/," %{SOURCE1} > $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
 
 %py_comp $RPM_BUILD_ROOT%{_roxdir}/%{_name}
 %py_ocomp $RPM_BUILD_ROOT%{_roxdir}/%{_name}
