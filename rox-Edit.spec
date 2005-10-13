@@ -2,12 +2,12 @@
 Summary:	ROX-Edit is a simple text editor
 Summary(pl):	ROX-Edit jest prostym edytorem tekstu
 Name:		rox-%{_name}
-Version:	1.9.7
-Release:	2
+Version:	2.0
+Release:	1
 License:	GPL v2
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/rox/edit-%{version}.tgz
-# Source0-md5:	a53920438d021640dbd4f573aa35bd76
+# Source0-md5:	55eb8c8b7b4bf630e626514b8bfa1f6e
 Source1:	%{name}.desktop
 URL:		http://rox.sourceforge.net/phpwiki/index.php/Edit
 Requires:	python-pygtk-gtk
@@ -33,10 +33,10 @@ install -d $RPM_BUILD_ROOT%{_roxdir}/%{_name}/{Help,Messages,images}
 install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_pixmapsdir}}
 
 cd %{_name}
-install .DirIcon App* *.py Options.xml $RPM_BUILD_ROOT%{_roxdir}/%{_name}
+install .DirIcon AppRun *.py *.xml $RPM_BUILD_ROOT%{_roxdir}/%{_name}
 install Help/README $RPM_BUILD_ROOT%{_roxdir}/%{_name}/Help
 install Messages/*.gmo $RPM_BUILD_ROOT%{_roxdir}/%{_name}/Messages
-install images/* $RPM_BUILD_ROOT%{_roxdir}/%{_name}/images
+install images/*.png $RPM_BUILD_ROOT%{_roxdir}/%{_name}/images
 install .DirIcon $RPM_BUILD_ROOT%{_pixmapsdir}/%{name}.png
 
 sed -e "s,/lib/,/%{_lib}/," %{SOURCE1} > $RPM_BUILD_ROOT%{_desktopdir}/%{name}.desktop
