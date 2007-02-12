@@ -1,6 +1,6 @@
 %define _name Edit
 Summary:	ROX-Edit is a simple text editor
-Summary(pl):	ROX-Edit jest prostym edytorem tekstu
+Summary(pl.UTF-8):   ROX-Edit jest prostym edytorem tekstu
 Name:		rox-%{_name}
 Version:	2.0
 Release:	1
@@ -21,7 +21,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 ROX-Edit is a very simple text editor written in Python.
 
-%description -l pl
+%description -l pl.UTF-8
 ROX-Edit jest bardzo prostym edytorem tekstu napisanym w Pythonie.
 
 %prep
