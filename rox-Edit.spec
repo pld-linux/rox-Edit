@@ -1,6 +1,6 @@
 %define _name Edit
 Summary:	ROX-Edit is a simple text editor
-Summary(pl.UTF-8):   ROX-Edit jest prostym edytorem tekstu
+Summary(pl.UTF-8):	ROX-Edit jest prostym edytorem tekstu
 Name:		rox-%{_name}
 Version:	2.0
 Release:	1
